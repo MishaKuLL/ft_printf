@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: raph <marvin@42.fr>                        +#+  +:+       +#+         #
+#    By: gglenpoi <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/09/10 14:03:55 by raph              #+#    #+#              #
-#    Updated: 2021/10/26 13:24:59 by raph             ###   ########.fr        #
+#    Created: 2021/11/22 14:48:01 by gglenpoi          #+#    #+#              #
+#    Updated: 2021/11/23 16:08:34 by gglenpoi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME = libftprintf.a
 LIBFT = ./libft/libft.a
 
 SRCS= ft_printf.c \
-	  sources/ft_check_format_specifiers.c \
+	  sources/ft_check_format.c \
 	  sources/ft_parser.c \
 	  sources/ft_print_char.c \
 	  sources/ft_print_hexa.c \
@@ -28,30 +28,30 @@ SRCS= ft_printf.c \
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror 
+OBJ = $(patsubst %.c,%.o,$(SRCS))
 
-OBJ = $(SRCS:.c=.o)
-
-INCLUDE = include/ft_printf.h
+INCLUDE = ft_printf.h
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	cd libft/ && $(MAKE)
-	cp libft/libft.a $(NAME)
+$(NAME): $(OBJ) $(if $(findstring all, $(MAKECMDGOALS)), $(OBJ))
+	$(MAKE) -C ./libft
+	cp $(LIBFT) $(NAME)
 	ar rcs $(NAME) $(OBJ)
+
+%.o : %.c $(INCLUDE)
+	gcc $(FLAGS) -c $< -o $@
+
+all: $(NAME)
 
 clean:
 	rm -rf $(OBJ)
-	cd libft/ && $(MAKE) clean
+	$(MAKE) clean -C ./libft
 
 fclean: clean
 	rm -rf $(NAME)
-	cd libft/ && $(MAKE) fclean
+	$(MAKE) fclean -C ./libft
 
 re: fclean all
 
 .PHONY: all clean fclean re
-
-
-

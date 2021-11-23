@@ -6,12 +6,12 @@
 /*   By: raph <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 10:27:43 by raph              #+#    #+#             */
-/*   Updated: 2021/11/04 14:08:15 by raph             ###   ########.fr       */
+/*   Updated: 2021/11/23 16:03:23 by gglenpoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../ft_printf.h"
 
-int	ft_check_format_specifiers(char c, va_list args)
+int	ft_check_format(char c, va_list args)
 {
 	int	char_printed;
 

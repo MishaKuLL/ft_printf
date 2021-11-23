@@ -6,7 +6,7 @@
 /*   By: raph <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 13:53:01 by raph              #+#    #+#             */
-/*   Updated: 2021/11/04 13:53:29 by raph             ###   ########.fr       */
+/*   Updated: 2021/11/23 16:04:12 by gglenpoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../ft_printf.h"
@@ -22,7 +22,7 @@ int	ft_parser(const char *str, va_list args)
 	{
 		if (str[i] == '%')
 		{
-			char_printed += ft_check_format_specifiers(str[i + 1], args);
+			char_printed += ft_check_format(str[i + 1], args);
 			i += 2;
 		}
 		else

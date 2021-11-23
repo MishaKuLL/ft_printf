@@ -6,7 +6,7 @@
 /*   By: raph <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 14:44:48 by raph              #+#    #+#             */
-/*   Updated: 2021/11/04 14:03:17 by raph             ###   ########.fr       */
+/*   Updated: 2021/11/23 15:58:30 by gglenpoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef FT_PRINTF_H
@@ -17,7 +17,7 @@
 
 int		ft_printf(const char *input, ...);
 int		ft_parser(const char *str, va_list args);
-int		ft_check_format_specifiers(char c, va_list args);
+int		ft_check_format(char c, va_list args);
 int		ft_print_char(char c);
 int		ft_print_string(char *str);
 int		ft_print_int(int i);
